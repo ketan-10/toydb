@@ -6,6 +6,10 @@
 #
 # cargo run --release --bin toysql
 
+
+# kill process if alredy exitis to unlock ports
+kill -9 $(lsof -c toydb | awk '{print $2}' | uniq | tail -n +2)  
+
 set -euo pipefail
 
 # Change into the script directory.
